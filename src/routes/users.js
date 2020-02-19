@@ -3,6 +3,7 @@ const User=require('../models/user')
 const router= new express.Router()
 const passport=require('passport')
 const { forwardAuthenticated, ensureAuthenticated }=require('../../config/auth')
+const questions=require('../models/question')
 
 router.get('/login',forwardAuthenticated,(req,res)=>{
     console.log(' IN login')
@@ -64,6 +65,11 @@ router.get('/logout',(req,res)=>
 {
     req.logout()
     res.redirect('/login')
+})
+
+router.get('/game',ensureAuthenticated,(req,res)=>{
+    res.render('game')
+    console.log(req.user)
 })
 
 
