@@ -1,6 +1,6 @@
 const mongoose=require('mongoose')
 
-const questionSchema=new mongoose.Schema({
+/*const questionSchema=new mongoose.Schema({
     index:{
         type:Number,
         required:true
@@ -34,4 +34,15 @@ const questionSchema=new mongoose.Schema({
 
 const Question=mongoose.model('Question',questionSchema)
 
-module.exports=Question
+module.exports=Question */
+const questions=[
+{ question:'Question1',
+  optionA:'A',
+  optionB:'B',
+  optionC: 'C',
+  optionD: 'D',
+  correct:'optionA'
+
+}]
+
+module.exports=questions
