@@ -29,23 +29,33 @@ function display()
     <button id="buttonf"> 
         Submit 
     </button> 
-</formid=""> 
-<!-- <form action='/game'method='GET'> -->
+
+ <form  id="form2" action='/game'method='GET' > 
     <div>
-        <button class="next">Next</button>
+        <button type="submit">Next</button>
     </div>
   </body>
 
-<!-- </form> -->
+ </form> 
 <script>
        
 
        const calculate=document.querySelector('#form1')
+       const gotoPage=document.querySelector('#form2')
 
        calculate.addEventListener('submit',(event)=>{
            event.preventDefault()
            display()
        })
+
+       gotoPage.addEventListener('submit',(event)=>{
+        event.preventDefault()
+           console.log('IN next')
+           $.get('/game')
+       })
+
+    
+
         function display()
         {   console.log('inside display')
             var answer='optionA'
@@ -70,6 +80,7 @@ function display()
         console.log(answer)
 
         $.post('/game',{answer:answer})
+         return
         }
                
         

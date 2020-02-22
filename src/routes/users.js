@@ -72,13 +72,19 @@ router.get('/logout',(req,res)=>
 })
 
 router.get('/game',ensureAuthenticated, async (req,res)=>{
-    
+    const array=req.user.q_array
     var number=getRnd(0,4)
-
     var question=questions[number]
-     try{
+    while(array.includes(question))
+    {
+        number=getRnd(0,4)
+        question=questions[number]
+    }
+    res.render('game',question)
+
+    try{
         req.user.q_array.push(question)
-    await req.user.save()
+        await req.user.save()
      }
      catch(e)
      {
@@ -88,7 +94,7 @@ router.get('/game',ensureAuthenticated, async (req,res)=>{
     console.log(req.user)
     
    
-    res.render('game',question)
+    
     
 })
 
@@ -102,6 +108,8 @@ router.post('/game',(req,res)=>{
     {
         console.log('wrong answer')
     }
+    req.user.qno=req.user.qno+1
+    console.log(req.user.qno)
 })
 
 
