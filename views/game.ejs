@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 function display()
 {   console.log('In display')
     console.log('Correct-ans',correctAns)
@@ -6,27 +6,73 @@ function display()
 
 
 
-</script>
+</script> -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MCQ Platform</title> 
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
 
 
+<body>
 <p id="question"><%= question %> </p>
 
-<form> 
-    <input type="radio" name="GFG" id="optionA"
-        value="<%= optionA %>"><%= optionA %><br> 
+<form id="form1" > 
+    <input type="radio" name="GFG" id="optionA"><%= optionA %><br> 
       
-    <input type="radio" name="GFG" id="optionB"
-        value="<%= optionB %>"><%= optionB %><br> 
+    <input type="radio" name="GFG" id="optionB"><%= optionB %><br> 
       
-    <input type="radio" name="GFG" id="optionC"
-        value="<%= optionC %>"><%= optionC %><br><br> 
+    <input type="radio" name="GFG" id="optionC"><%= optionC %><br><br> 
   
-    <button  type="submit" onclick="display()"> 
+    <button id="buttonf"> 
         Submit 
     </button> 
-</form> 
-<form action='/game'method='GET'>
+</formid=""> 
+<!-- <form action='/game'method='GET'> -->
     <div>
-        <button type="submit">Next</button>
+        <button class="next">Next</button>
     </div>
-</form>
+  </body>
+
+<!-- </form> -->
+<script>
+       
+
+       const calculate=document.querySelector('#form1')
+
+       calculate.addEventListener('submit',(event)=>{
+           event.preventDefault()
+           display()
+       })
+        function display()
+        {   console.log('inside display')
+            var answer='optionA'
+        const A= document.getElementById('optionA').checked
+        const B= document.getElementById('optionB').checked
+        const C= document.getElementById('optionC').checked
+       
+
+        if(B)
+        {
+            answer='optionB'
+        }
+        else if(C)
+        {
+            answer='optionC'
+        }
+        
+        console.log('in javascript')
+        console.log('A is', A) 
+        console.log('B is',B)
+        console.log('C is',C)
+        console.log(answer)
+
+        $.post('/game',{answer:answer})
+        }
+               
+        
+                
+        </script>
+</html>

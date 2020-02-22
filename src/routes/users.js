@@ -72,15 +72,36 @@ router.get('/logout',(req,res)=>
 })
 
 router.get('/game',ensureAuthenticated, async (req,res)=>{
-
-    var number=getRnd(0,2)
-    console.log('Number',number)
-    var question=questions[number]
-    //const array= await User.findById(req.user._id)
     
-    console.log(question)
-    res.render('game',question)
+    var number=getRnd(0,4)
+
+    var question=questions[number]
+     try{
+        req.user.q_array.push(question)
+    await req.user.save()
+     }
+     catch(e)
+     {
+         res.status(400).send({error :'Error, cannot open'})
+     }
+    
     console.log(req.user)
+    
+   
+    res.render('game',question)
+    
+})
+
+router.post('/game',(req,res)=>{
+    const index=req.user.qno
+    if(req.body.answer==req.user.q_array[index].correctAns)
+    {
+        console.log('correct answer')
+    }
+    else
+    {
+        console.log('wrong answer')
+    }
 })
 
 

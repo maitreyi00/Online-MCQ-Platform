@@ -24,6 +24,10 @@ const userSchema=new mongoose.Schema({
     score:{
         type:Number
     },
+    qno :{
+        type:Number,
+        default:0
+    },
     q_array:[{
         question:{
             type:String,

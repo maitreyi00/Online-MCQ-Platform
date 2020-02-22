@@ -41,7 +41,7 @@ const questions=[
   optionB:'B',
   optionC: 'C',
   optionD: 'D',
-  correct:'optionA'
+  correctAns:'optionA'
 
 },
 { question:'Question2',
@@ -49,7 +49,7 @@ const questions=[
   optionB:'B',
   optionC: 'C',
   optionD: 'D',
-  correct:'optionB'
+  correctAns:'optionB'
 
 },
 { question:'Question3',
@@ -57,7 +57,7 @@ const questions=[
   optionB:'B',
   optionC: 'C',
   optionD: 'D',
-  correct:'optionC'
+  correctAns:'optionC'
 
 },
 { question:'Question4',
@@ -65,7 +65,7 @@ const questions=[
   optionB:'B',
   optionC: 'C',
   optionD: 'D',
-  correct:'optionB'
+  correctAns:'optionB'
 
 },
 { question:'Question5',
@@ -73,7 +73,7 @@ const questions=[
   optionB:'B',
   optionC: 'C',
   optionD: 'D',
-  correct:'optionD'
+  correctAns:'optionD'
 
 }]
 

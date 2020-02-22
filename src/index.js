@@ -1,4 +1,5 @@
 const express=require('express')
+const path=require('path')
 const expressLayouts=require('express-ejs-layouts')
 require('./db/mongoose')
 const userRouter=require('./routes/users')
@@ -10,7 +11,10 @@ initializePassport(passport)
 
 const app=express()
 const port=process.env.PORT||3000
+const pathStatic=path.join(__dirname,'../public')
 
+//set path for static files
+app.set(express.static(pathStatic))
 //EJS
 //app.use(expressLayouts)
 app.set('view engine','ejs')
