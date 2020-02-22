@@ -5,6 +5,10 @@ const passport=require('passport')
 const { forwardAuthenticated, ensureAuthenticated }=require('../../config/auth')
 const questions=require('../models/question')
 
+function getRnd(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
+
 router.get('/login',forwardAuthenticated,(req,res)=>{
     console.log(' IN login')
     res.render('login')
@@ -67,8 +71,15 @@ router.get('/logout',(req,res)=>
     res.redirect('/login')
 })
 
-router.get('/game',ensureAuthenticated,(req,res)=>{
-    res.render('game')
+router.get('/game',ensureAuthenticated, async (req,res)=>{
+
+    var number=getRnd(0,2)
+    console.log('Number',number)
+    var question=questions[number]
+    //const array= await User.findById(req.user._id)
+    
+    console.log(question)
+    res.render('game',question)
     console.log(req.user)
 })
 

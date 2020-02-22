@@ -1,1 +1,32 @@
-<h1> IN the game!</h1>
+<script>
+function display()
+{   console.log('In display')
+    console.log('Correct-ans',correctAns)
+}
+
+
+
+</script>
+
+
+<p id="question"><%= question %> </p>
+
+<form> 
+    <input type="radio" name="GFG" id="optionA"
+        value="<%= optionA %>"><%= optionA %><br> 
+      
+    <input type="radio" name="GFG" id="optionB"
+        value="<%= optionB %>"><%= optionB %><br> 
+      
+    <input type="radio" name="GFG" id="optionC"
+        value="<%= optionC %>"><%= optionC %><br><br> 
+  
+    <button  type="submit" onclick="display()"> 
+        Submit 
+    </button> 
+</form> 
+<form action='/game'method='GET'>
+    <div>
+        <button type="submit">Next</button>
+    </div>
+</form>

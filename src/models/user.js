@@ -23,7 +23,34 @@ const userSchema=new mongoose.Schema({
     },
     score:{
         type:Number
-    }
+    },
+    q_array:[{
+        question:{
+            type:String,
+            required:true,
+        },
+        optionA:{
+            type:String,
+            required:true
+        },
+        optionB:{
+            type:String,
+            required:true
+        },
+        optionC:{
+            type:String,
+            required:true
+        },
+        optionD:{
+            type:String,
+            required:true
+        },
+        correctAns:{
+            type:String,
+            required:true
+        }
+
+    }]
 })
 
 const User=mongoose.model('User',userSchema)

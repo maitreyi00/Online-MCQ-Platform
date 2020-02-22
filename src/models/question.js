@@ -43,6 +43,38 @@ const questions=[
   optionD: 'D',
   correct:'optionA'
 
+},
+{ question:'Question2',
+  optionA:'A',
+  optionB:'B',
+  optionC: 'C',
+  optionD: 'D',
+  correct:'optionB'
+
+},
+{ question:'Question3',
+  optionA:'A',
+  optionB:'B',
+  optionC: 'C',
+  optionD: 'D',
+  correct:'optionC'
+
+},
+{ question:'Question4',
+  optionA:'A',
+  optionB:'B',
+  optionC: 'C',
+  optionD: 'D',
+  correct:'optionB'
+
+},
+{ question:'Question5',
+  optionA:'A',
+  optionB:'B',
+  optionC: 'C',
+  optionD: 'D',
+  correct:'optionD'
+
 }]
 
 module.exports=questions
