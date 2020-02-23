@@ -72,14 +72,29 @@ router.get('/logout',(req,res)=>
 })
 
 router.get('/game',ensureAuthenticated, async (req,res)=>{
-    const array=req.user.q_array
+    var array=req.user.q_array
+    var array_numbers=[]
+
+    array.forEach((ques)=> {
+        var str=ques.question
+        var strno=str.split("n")
+        var no=parseInt(strno[1]-1)        
+        array_numbers.push(no)
+    })
+
     var number=getRnd(0,4)
+    console.log('Random number:',number)
     var question=questions[number]
-    while(array.includes(question))
+    console.log(array_numbers)
+    if(array_numbers)
     {
-        number=getRnd(0,4)
-        question=questions[number]
+        while(array_numbers.includes(number) && req.user.qno!=5)
+        {   console.log('IN while loop')
+            number=getRnd(0,4)
+            question=questions[number]
+        }
     }
+   
     res.render('game',question)
 
     try{
@@ -98,7 +113,7 @@ router.get('/game',ensureAuthenticated, async (req,res)=>{
     
 })
 
-router.post('/game',(req,res)=>{
+router.post('/game',async (req,res)=>{
     const index=req.user.qno
     if(req.body.answer==req.user.q_array[index].correctAns)
     {
@@ -109,9 +124,22 @@ router.post('/game',(req,res)=>{
         console.log('wrong answer')
     }
     req.user.qno=req.user.qno+1
+    await req.user.save()
     console.log(req.user.qno)
 })
 
+router.get('/remove',ensureAuthenticated,async (req,res)=>{
+    try{ req.user.qno=0
+        req.user.q_array=[]
+        await req.user.save()
+    }
+    catch(e)
+    {
+        res.status(400).send({error:e})
+    }
+    
+
+})
 
 
 module.exports=router

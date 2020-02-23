@@ -2,11 +2,11 @@
 function display()
 {   console.log('In display')
     console.log('Correct-ans',correctAns)
-}
+}  
 
 
 
-</script> -->
+</script> actual comment till here --> 
 <!DOCTYPE html>
 <html>
 
@@ -29,8 +29,9 @@ function display()
     <button id="buttonf"> 
         Submit 
     </button> 
+</form>
 
- <form  id="form2" action='/game'method='GET' > 
+ <form  id="form2" > 
     <div>
         <button type="submit">Next</button>
     </div>
@@ -43,12 +44,12 @@ function display()
        const calculate=document.querySelector('#form1')
        const gotoPage=document.querySelector('#form2')
 
-       calculate.addEventListener('submit',(event)=>{
+       calculate.addEventListener('submit', event =>{
            event.preventDefault()
            display()
        })
 
-       gotoPage.addEventListener('submit',(event)=>{
+       gotoPage.addEventListener('submit',event =>{
         event.preventDefault()
            console.log('IN next')
            $.get('/game')
@@ -86,4 +87,71 @@ function display()
         
                 
         </script>
-</html>
+</html>  
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>MCQ Platform</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  </head>
+
+  <body>
+    <p id="question"><%= question %></p>
+
+    <form id="form1">
+      <input type="radio" name="GFG" id="optionA" /><%= optionA %><br />
+
+      <input type="radio" name="GFG" id="optionB" /><%= optionB %><br />
+
+      <input type="radio" name="GFG" id="optionC" /><%= optionC %><br /><br />
+
+      <button id="buttonf">
+        Submit
+      </button>
+    </form>
+    <form id="form2" action="/game" method="GET">
+      <div>
+        <button type="submit">Next</button>
+      </div>
+    </form>
+
+    <script>
+      const calculate = document.querySelector("#form1");
+      const gotoPage = document.querySelector("#form2");
+
+      calculate.addEventListener("submit", event => {
+        event.preventDefault();
+        display();
+      });
+
+      gotoPage.addEventListener("submit", event => {
+        event.preventDefault();
+        console.log("IN next");
+        $.get("/game");
+      });
+
+      function display() {
+        console.log("inside display");
+        var answer = "optionA";
+        const A = document.getElementById("optionA").checked;
+        const B = document.getElementById("optionB").checked;
+        const C = document.getElementById("optionC").checked;
+
+        if (B) {
+          answer = "optionB";
+        } else if (C) {
+          answer = "optionC";
+        }
+
+        console.log("in javascript");
+        console.log("A is", A);
+        console.log("B is", B);
+        console.log("C is", C);
+        console.log(answer);
+
+        $.post("/game", { answer: answer });
+        return;
+      }
+    </script>
+  </body>
+</html> -->
