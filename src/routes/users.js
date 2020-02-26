@@ -75,31 +75,32 @@ router.get('/game',ensureAuthenticated, async (req,res)=>{
     var array=req.user.q_array
     var array_numbers=[]
 
-    array.forEach((ques)=> {
-        var str=ques.question
-        var strno=str.split("n")
-        var no=parseInt(strno[1]-1)        
+     array.forEach((ques)=> {
+         var str=ques.question
+         var strno=str.split("n")
+         var no=parseInt(strno[1]-1)        
         array_numbers.push(no)
-    })
+     })
 
     var number=getRnd(0,4)
     console.log('Random number:',number)
     var question=questions[number]
-    console.log(array_numbers)
-    if(array_numbers)
-    {
-        while(array_numbers.includes(number) && req.user.qno!=5)
-        {   console.log('IN while loop')
-            number=getRnd(0,4)
-            question=questions[number]
-        }
-    }
-   
+     console.log(array_numbers)
+     if(array_numbers)
+     {
+         while(array_numbers.includes(number) && req.user.qno!=5)
+         {   console.log('IN while loop')
+             number=getRnd(0,4)
+             question=questions[number]
+         }
+     }
+    console.log('question is',question)
     res.render('game',question)
 
     try{
         req.user.q_array.push(question)
         await req.user.save()
+        
      }
      catch(e)
      {

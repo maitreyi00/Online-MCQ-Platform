@@ -40,7 +40,7 @@ function display()
  </form> 
 <script>
        
-
+      console.log(question)
        const calculate=document.querySelector('#form1')
        const gotoPage=document.querySelector('#form2')
 
@@ -50,7 +50,7 @@ function display()
        })
 
        gotoPage.addEventListener('submit',event =>{
-        event.preventDefault()
+        
            console.log('IN next')
            $.get('/game')
        })
