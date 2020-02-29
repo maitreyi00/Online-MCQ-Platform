@@ -4,6 +4,8 @@ const router= new express.Router()
 const passport=require('passport')
 const { forwardAuthenticated, ensureAuthenticated }=require('../../config/auth')
 const questions=require('../models/question')
+const questions2=require('../models/question2')
+const questions3=require('../models/question3')
 
 function getRnd(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
@@ -19,23 +21,6 @@ router.get('/instructions',ensureAuthenticated,(req,res)=>{
 })
 
 
-/*router.post('/users/login',async (req,res)=>{
-    
-   try
-   { 
-       const user= await User.findOne({email:req.body.email, password:req.body.password})
-       if(!user)
-       {
-           res.send({error:'No such user found'})
-           return
-       }
-       res.send(user)
-   }
-   catch(e)
-   {
-       res.status(500).send({error:e})
-   }
-}) */
 
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
@@ -74,26 +59,75 @@ router.get('/logout',(req,res)=>
 router.get('/game',ensureAuthenticated, async (req,res)=>{
     var array=req.user.q_array
     var array_numbers=[]
+    var qno=req.user.qno
 
-     array.forEach((ques)=> {
-         var str=ques.question
-         var strno=str.split("n")
-         var no=parseInt(strno[1]-1)        
-        array_numbers.push(no)
-     })
-
-    var number=getRnd(0,4)
-    console.log('Random number:',number)
-    var question=questions[number]
-     console.log(array_numbers)
-     if(array_numbers)
-     {
-         while(array_numbers.includes(number) && req.user.qno!=5)
-         {   console.log('IN while loop')
-             number=getRnd(0,4)
-             question=questions[number]
-         }
-     }
+    if(qno>=0 && qno<=4)
+    {
+        array.forEach((ques)=> {
+            var str=ques.question
+            var strno=str.split("n")
+            var no=parseInt(strno[1]-1)        
+           array_numbers.push(no)
+        })
+   
+       var number=getRnd(0,4)
+       console.log('Random number:',number)
+       var question=questions[number]
+        console.log(array_numbers)
+        if(array_numbers)
+        {
+            while(array_numbers.includes(number) && req.user.qno!=5)
+            {   console.log('IN while loop')
+                number=getRnd(0,4)
+                question=questions[number]
+            }
+        }
+    }
+    else if(qno>=5 && qno<=9)
+    {
+        array.forEach((ques)=> {
+            var str=ques.question
+            var strno=str.split("n")
+            var no=parseInt(strno[1]-1)        
+           array_numbers.push(no)
+        })
+   
+       var number=getRnd(5,9)
+       console.log('Random number:',number)
+       var question=questions2[number-5]
+        console.log(array_numbers)
+        if(array_numbers)
+        {
+            while(array_numbers.includes(number) && req.user.qno!=5)
+            {   console.log('IN while loop')
+                number=getRnd(5,9)
+                question=questions2[number-5]
+            }
+        }
+    }
+    else if(qno>=10 && qno<=14)
+    {
+        array.forEach((ques)=> {
+            var str=ques.question
+            var strno=str.split("n")
+            var no=parseInt(strno[1]-1)        
+           array_numbers.push(no)
+        })
+   
+       var number=getRnd(10,14)
+       console.log('Random number:',number)
+       var question=questions3[number-10]
+        console.log(array_numbers)
+        if(array_numbers)
+        {
+            while(array_numbers.includes(number) && req.user.qno!=5)
+            {   console.log('IN while loop')
+                number=getRnd(10,14)
+                question=questions3[number-10]
+            }
+        }
+    }
+     //choosing the question, done here!.
     console.log('question is',question)
     res.render('game',question)
 
