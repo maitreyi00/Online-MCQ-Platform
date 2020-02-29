@@ -1,5 +1,5 @@
 const questions3=[
-    { question:'Question1',
+    { question:'Question11',
       optionA:'A',
       optionB:'B',
       optionC: 'C',
@@ -7,7 +7,7 @@ const questions3=[
       correctAns:'optionA'
     
     },
-    { question:'Question2',
+    { question:'Question12',
       optionA:'A',
       optionB:'B',
       optionC: 'C',
@@ -15,7 +15,7 @@ const questions3=[
       correctAns:'optionB'
     
     },
-    { question:'Question3',
+    { question:'Question13',
       optionA:'A',
       optionB:'B',
       optionC: 'C',
@@ -23,7 +23,7 @@ const questions3=[
       correctAns:'optionC'
     
     },
-    { question:'Question4',
+    { question:'Question14',
       optionA:'A',
       optionB:'B',
       optionC: 'C',
@@ -31,7 +31,7 @@ const questions3=[
       correctAns:'optionB'
     
     },
-    { question:'Question5',
+    { question:'Question15',
       optionA:'A',
       optionB:'B',
       optionC: 'C',

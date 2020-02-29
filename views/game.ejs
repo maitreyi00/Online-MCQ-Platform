@@ -50,9 +50,9 @@ function display()
        })
 
        gotoPage.addEventListener('submit',event =>{
-        
+            
            console.log('IN next')
-           $.get('/game')
+           //$.get('/game')
        })
 
     
@@ -81,7 +81,7 @@ function display()
         console.log(answer)
 
         $.post('/game',{answer:answer})
-         return
+         //return
         }
                
         
