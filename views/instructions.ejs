@@ -1,4 +1,4 @@
-<h1>Instructions</h1>
+<!-- <h1>Instructions</h1>
 
 <form action='/logout' method='GET'>
     <div>
@@ -16,4 +16,80 @@
     <div>
           <button type="submit">Remove</button>
     </div>
-</form>
+</form> -->
+
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+  
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="css/instructions.css"> 
+  <title>Instruction</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+ 
+
+</head>
+
+<body>
+
+  <div class="bg-image"></div>
+
+  <div class="container">
+
+    <div class="one">
+      <div class="card">
+        <div class="card" style="background-image: linear-gradient(to bottom right, rgb(38, 10, 104), rgb(204, 0, 255)); color: white;">
+          <div class="card-body">QUIZMASTER</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="card">
+        <h2 class="card-header"><b>Instructions</b></h2>
+        <div class="card-body" style="text-align: left;">
+          <h5 class="card-title">Please read the following instructions carefully before starting the test</h5>
+          <div class="card-text">
+            <h5>
+              <p>1.</p>
+              <p>2.</p>
+              <p>3.</p>
+              <p>4.</p>
+              <p>5.</p>
+              <p>6.</p>
+              <p>7.</p>
+            </h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="three">
+      <div class="card">
+        <div class="card" style="background-image: linear-gradient(to bottom right, rgb(38, 10, 104), rgb(204, 0, 255)); color: white;">
+          <div class="card-body"><h5>I have carefully read the given instructions and would like to start the test.</h5></div>
+          <div class="button">
+            <div class="eff"></div>
+            <a href="/game"> Start Test</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form action='/remove' method='GET'>
+        <div>
+              <button type="submit">Remove</button>
+        </div>
+    </form>
+  </div>
+  
+  
+
+</body>
+
+</html>

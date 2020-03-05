@@ -37,7 +37,7 @@ const Question=mongoose.model('Question',questionSchema)
 module.exports=Question */
 const questions=[
 { question:'Question1',
-  optionA:'A',
+  optionA:'A1',
   optionB:'B',
   optionC: 'C',
   optionD: 'D',
@@ -45,7 +45,7 @@ const questions=[
 
 },
 { question:'Question2',
-  optionA:'A',
+  optionA:'A2',
   optionB:'B',
   optionC: 'C',
   optionD: 'D',
@@ -53,7 +53,7 @@ const questions=[
 
 },
 { question:'Question3',
-  optionA:'A',
+  optionA:'A3',
   optionB:'B',
   optionC: 'C',
   optionD: 'D',
@@ -61,7 +61,7 @@ const questions=[
 
 },
 { question:'Question4',
-  optionA:'A',
+  optionA:'A4',
   optionB:'B',
   optionC: 'C',
   optionD: 'D',
@@ -69,7 +69,7 @@ const questions=[
 
 },
 { question:'Question5',
-  optionA:'A',
+  optionA:'A5',
   optionB:'B',
   optionC: 'C',
   optionD: 'D',

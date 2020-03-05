@@ -11,59 +11,70 @@ function display()
 <html>
 
 <head>
+    <link rel="stylesheet" href="./css/style.css">
     <title>MCQ Platform</title> 
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    
 </head>
 
 
 <body>
-<p id="question"><%= question %> </p>
+    <div id="set">
+<p id="question" ><%= question %> </p>
 
 <form id="form1" > 
-    <input type="radio" name="GFG" id="optionA"><%= optionA %><br> 
+    
+    <input type="radio" name="GFG" id="optionA" value="<%= optionA%>"><div id="fir"><%= optionA %></div><br> 
       
-    <input type="radio" name="GFG" id="optionB"><%= optionB %><br> 
+    <input type="radio" name="GFG" id="optionB" value="<%= optionA%>"><div id="sec"><%= optionB %></div><br> 
       
-    <input type="radio" name="GFG" id="optionC"><%= optionC %><br><br> 
-  
-    <button id="buttonf"> 
+    <input type="radio" name="GFG" id="optionC" value="<%= optionA%>"><div id="thir"><%= optionC %></div><br><br> 
+     </div>   
+    <!-- <button id="buttonf"> 
         Submit 
-    </button> 
+    </button>  -->
 </form>
 
- <form  id="form2" > 
+ <!-- <form  id="form2" > 
     <div>
         <button type="submit">Next</button>
     </div>
+  </form>  -->
   </body>
 
- </form> 
+ 
 <script>
        
-      console.log(question)
-       const calculate=document.querySelector('#form1')
-       const gotoPage=document.querySelector('#form2')
+      
+       //const calculate=document.querySelector('#form1')
+       //const gotoPage=document.querySelector('#form2')
 
-       calculate.addEventListener('submit', event =>{
-           event.preventDefault()
-           display()
-       })
+      //  calculate.addEventListener('submit', event =>{
+      //      event.preventDefault()
+      //      display()
+      //  })
 
-       gotoPage.addEventListener('submit',event =>{
-            //on clicking, page reloads, so get request sent automatically!
-           console.log('IN next')
-           //$.get('/game')
-       })
-
-    
+      //  gotoPage.addEventListener('submit',event =>{
+      //       //on clicking, page reloads, so get request sent automatically!
+      //      console.log('IN next')
+      //      //$.get('/game')
+      //  })
+        $(document).ready( function() {
+          setTimeout(display,5000)
+        })
+      
+     
 
         function display()
         {   console.log('inside display')
             var answer='optionA'
+            const A1=document.getElementById('optionA')
+            
         const A= document.getElementById('optionA').checked
         const B= document.getElementById('optionB').checked
         const C= document.getElementById('optionC').checked
-       
+        
+
 
         if(B)
         {
@@ -80,9 +91,26 @@ function display()
         console.log('C is',C)
         console.log(answer)
 
+        
         $.post('/game',{answer:answer})
-         //return
+        $.ajax({
+            url:"/game",
+            type:"GET",
+        }).done(function (result){
+            console.log(result)
+            renderFunction(result)
+        }).fail(function(err){
+            console.log(err)
+        })
+        //renderQuestion()
+         
         }
+        var renderFunction = function(result){
+            var set= document.getElementById('set')
+            set.innerHTML=result
+            setTimeout(display,5000)
+        }
+
                
         
                 

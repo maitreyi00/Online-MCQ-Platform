@@ -150,6 +150,9 @@ router.get('/game',ensureAuthenticated, async (req,res)=>{
 
 router.post('/game',async (req,res)=>{
     const index=req.user.qno
+    console.log(index)
+    console.log(req.user.q_array[index].correctAns)
+    console.log(req.body.answer)
     if(req.body.answer==req.user.q_array[index].correctAns)
     {
         console.log('correct answer')
@@ -161,6 +164,9 @@ router.post('/game',async (req,res)=>{
     req.user.qno=req.user.qno+1
     await req.user.save()
     console.log(req.user.qno)
+
+    
+
 })
 
 router.get('/remove',ensureAuthenticated,async (req,res)=>{
@@ -174,6 +180,10 @@ router.get('/remove',ensureAuthenticated,async (req,res)=>{
     }
     
 
+})
+
+router.get('',(req,res)=>{
+    res.render('ind')
 })
 
 
