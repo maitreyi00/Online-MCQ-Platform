@@ -20,6 +20,20 @@ router.get('/instructions',ensureAuthenticated,(req,res)=>{
     res.render('instructions')
 })
 
+router.get('/time',ensureAuthenticated,(req,res)=>{
+    var num=req.user.qno
+    var time=10000
+    if(num>4 && num<=9)
+    {
+        time=15
+    }
+    else if(num>9 && num<=14)
+    {
+        time=20
+    }
+    res.send({time:time})
+})
+
 
 
 router.post('/login', (req, res, next) => {

@@ -1,0 +1,111 @@
+<!-- <script>
+function display()
+{   console.log('In display')
+    console.log('Correct-ans',correctAns)
+}  
+
+
+
+</script> actual comment till here --> 
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>MCQ Platform</title> 
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    
+</head>
+
+
+<body>
+    <div id="set">
+<p id="question" ><%= question %> </p>
+
+<form id="form1" > 
+    
+    <input type="radio" name="GFG" id="optionA" value="<%= optionA%>"><div id="fir"><%= optionA %></div><br> 
+      
+    <input type="radio" name="GFG" id="optionB" value="<%= optionA%>"><div id="sec"><%= optionB %></div><br> 
+      
+    <input type="radio" name="GFG" id="optionC" value="<%= optionA%>"><div id="thir"><%= optionC %></div><br><br> 
+     </div>   
+   
+</form>
+
+ <!-- <form  id="form2" > 
+    <div>
+        <button type="submit">Next</button>
+    </div>
+  </form>  -->
+  </body>
+
+ 
+<script>
+       
+      
+       
+
+      //  gotoPage.addEventListener('submit',event =>{
+      //       //on clicking, page reloads, so get request sent automatically!
+      //      console.log('IN next')
+      //      //$.get('/game')
+      //  })
+        $(document).ready( function() {
+          setTimeout(display,5000)
+        })
+      
+     
+
+        function display()
+        {   console.log('inside display')
+            var answer='optionA'
+            const A1=document.getElementById('optionA')
+            
+        const A= document.getElementById('optionA').checked
+        const B= document.getElementById('optionB').checked
+        const C= document.getElementById('optionC').checked
+        
+
+
+        if(B)
+        {
+            answer='optionB'
+        }
+        else if(C)
+        {
+            answer='optionC'
+        }
+        
+        console.log('in javascript')
+        console.log('A is', A) 
+        console.log('B is',B)
+        console.log('C is',C)
+        console.log(answer)
+
+        
+        $.post('/game',{answer:answer})
+        $.ajax({
+            url:"/game",
+            type:"GET",
+        }).done(function (result){
+            console.log(result)
+            renderFunction(result)
+        }).fail(function(err){
+            console.log(err)
+        })
+        //renderQuestion()
+         
+        }
+        var renderFunction = function(result){
+            var set= document.getElementById('set')
+            set.innerHTML=result
+            setTimeout(display,5000)
+        }
+
+               
+        
+                
+        </script>
+</html>  
+

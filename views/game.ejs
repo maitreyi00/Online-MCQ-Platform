@@ -1,66 +1,96 @@
-<!-- <script>
-function display()
-{   console.log('In display')
-    console.log('Correct-ans',correctAns)
-}  
-
-
-
-</script> actual comment till here --> 
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 
 <head>
-    <link rel="stylesheet" href="./css/style.css">
-    <title>MCQ Platform</title> 
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>mcq</title>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="css/mcq.css">
+
 </head>
 
+<body translate="no">
 
-<body>
-    <div id="set">
-<p id="question" ><%= question %> </p>
-
-<form id="form1" > 
-    
-    <input type="radio" name="GFG" id="optionA" value="<%= optionA%>"><div id="fir"><%= optionA %></div><br> 
-      
-    <input type="radio" name="GFG" id="optionB" value="<%= optionA%>"><div id="sec"><%= optionB %></div><br> 
-      
-    <input type="radio" name="GFG" id="optionC" value="<%= optionA%>"><div id="thir"><%= optionC %></div><br><br> 
-     </div>   
-    <!-- <button id="buttonf"> 
-        Submit 
-    </button>  -->
-</form>
-
- <!-- <form  id="form2" > 
-    <div>
-        <button type="submit">Next</button>
+<body onload="startQuiz()">
+  <div id="set">
+  <div class="center">
+    <div class="card js-card">
+      <div class="card__wrapper">
+        <div class="card__side is-active">
+            <div id="question" ><%= question %> </div>
+          <div class="cardCenter"></div>
+          <hr>
+          <p id="question"></p>
+        </div>
+      </div>
     </div>
-  </form>  -->
-  </body>
+  </div>
+  <form id="form1">
+  <div class="optionA">
+    <p><input type="radio" name="GFG" id="optionA" value="<%= optionA%>"><div id="fir"><%= optionA %></div></p>
+    <div class="cardCenter"></div>
+    <hr>
+    <p class="choice" id="A"></p>
+  </div>
+  
+  <div class="optionB">
+    <p><input type="radio" name="GFG" id="optionB" value="<%= optionB%>"><div id="sec"><%= optionB %></div></p>
+    <div class="cardCenter"></div>
+    <hr>
+    <p class="choice" id="B"></p>
+  </div>
+  
+  <div class="optionC">
+    <p><input type="radio" name="GFG" id="optionC" value="<%= optionC%>"><div id="thir"><%= optionC %></div><br></p>
+    <div class="cardCenter"></div>
+    <hr>
+    <p class="choice" id="C"></p>
+  </div>
+  
+  <div class="optionD">
+    <p><input type="radio" name="GFG" id="optionD" value="<%= optionD%>"><div id="four"><%= optionD %></div><br></p>
+    <div class="cardCenter"></div>
+    <hr>
+    <p class="choice" id="D"></p>
+  </div>
+  </form>
+  
 
- 
-<script>
-       
-      
-       //const calculate=document.querySelector('#form1')
-       //const gotoPage=document.querySelector('#form2')
-
-      //  calculate.addEventListener('submit', event =>{
-      //      event.preventDefault()
-      //      display()
-      //  })
-
-      //  gotoPage.addEventListener('submit',event =>{
-      //       //on clicking, page reloads, so get request sent automatically!
-      //      console.log('IN next')
-      //      //$.get('/game')
-      //  })
-        $(document).ready( function() {
-          setTimeout(display,5000)
+  <h2>TIME REMAINING</h2>
+  <div id="box">
+    <div>
+      <span class="minutes" id="minutes"></span>
+      <div class="text">Minutes</div>
+    </div>
+    <div>
+      <span class="seconds" id="seconds"></span>
+      <div class="text">Seconds</div>
+    </div>
+  </div>
+  </div>
+  
+  <button type="submit" id="button" class="button" onclick="nextQuestion()">NEXT</button>
+  
+  <div id="quiz" style="display: none"></div>
+  <div id="progress"></div>
+  
+  <div id='stars'></div>
+  <div id='stars2'></div>
+  <div id='stars3'></div>
+  <script src="js/mcq.js"></script>
+  <script >
+    const min=document.getElementById('minutes')
+    const sec=document.getElementById('seconds')
+      $(document).ready( function() {
+          
+          setTimeout(display,10000)
         })
       
      
@@ -108,12 +138,14 @@ function display()
         var renderFunction = function(result){
             var set= document.getElementById('set')
             set.innerHTML=result
-            setTimeout(display,5000)
+               
+            setTimeout(display,10000)
         }
 
-               
-        
-                
-        </script>
-</html>  
+  </script>
 
+</body>
+
+</body>
+
+</html>
